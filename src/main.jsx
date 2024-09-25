@@ -1,17 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import DashboardPage from "../routes/dashboardPage/DashboardPage";
-import HomePage from "../routes/homePage/Homepage";
-import ChatPage from "../routes/chatPage/ChatPage";
+import DashboardPage from "./routes/dashboardPage/DashboardPage";
+import ChatPage from "./routes/chatPage/ChatPage";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
   Link,
 } from "react-router-dom";
-import RootLayout from "./layouts/rootLayouts/RootLayous";
-import dashboardLayout from "./dashboardLayout/DashboardLayout";
+import RootLayout from "./layouts/rootLayout/RootLayout";
+import DashboardLayout from "./layouts/dashboardLayout/DashboardLayout";
+import Homepage from "./routes/homepage/Homepage";
+import SignInPage from "./routes/signInPage/SignInPage";
+import SignUpPage from "./routes/signUpPage/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -19,27 +21,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Homepage />,
       },
       {
-        element: <dashboardLayout />,
+        path: "/sign-in/",
+        element: <SignInPage />,
+      },
+      {
+        path: "/sign-up/",
+        element: <SignUpPage />,
+      },
+      {
+        element: <DashboardLayout />,
         children: [
           {
-            path: "dashboard",
-            element: <DashboardPage />
+            path: "/dashboard",
+            element: <DashboardPage />,
           },
           {
             path: "dashboard/chats/:id",
-            element: <ChatPage />
+            element: <ChatPage />,
           },
-
-        ]
+        ],
       },
-    ]
-  }
+    ],
+  },
 ]);
-
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

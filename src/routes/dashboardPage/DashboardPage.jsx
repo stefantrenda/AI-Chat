@@ -1,7 +1,11 @@
+import "./dashboardPage.css";
+
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
-  )
-}
+    <div className="dashboardPage">
+      <div className="texts"></div>
+    </div>
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;
